@@ -1,0 +1,33 @@
+// Placeholder to allow defining custom styles that override everything else.
+// (Use `_sass/minima/custom-variables.scss` to override variable defaults)
+
+// *** Customisation for font ***
+@font-face {
+//   font-family: amiga; /* set name */
+//   src: url(/assets/font/Amiga\ Topaz\ v1.woff2); /* url of the font */
+  font-family: spectrum; /* set name */
+  src: url(/assets/font/sinclair-zx-spectrum-es.otf.woff2); /* url of the font */
+}
+h1, h2, h3, .site-title, .nav-item, .post-link {
+  font-family: spectrum;
+  letter-spacing: -2px;
+}
+// ***---***
+.site-header {
+    border-top: 5px solid rgb(0, 255, 0);//#00FF66; //#00FF00; //#009900;
+    // original style 5px solid #999999
+    border-bottom: 1px solid #006600;
+}
+.site-footer {
+    border-top: 1px solid #006600;
+}
+.post-header {
+    border-bottom: 1px solid #006600;
+}
+a {
+    color: #56cd91;
+}
+// RGB Greens
+// #80FF00
+// #00FF00
+// #00FF80
