@@ -14,12 +14,12 @@ Fixed broken burger menu by adding link to specific Font Awesome version in `foo
 
 
 - In footer
-    - add basic site information page
+    - ~~add basic site information page~~
     - add disclaimer page
 
 - Check
-    - sitemap
-    - RSS feed
+    - ~~sitemap~~
+    - ~~RSS feed~~
 
 - Blog posts
     - date
