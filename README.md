@@ -31,3 +31,16 @@ Fixed broken burger menu by adding link to specific Font Awesome version in `foo
 
 Header
     - ~~create data file, remove `tags` link~~ Done.
+
+CSS/SASS
+    - Added CSS and HTML to embed CV as PDF. Is this causing a flash? Getting a Firefox warning
+
+Blog posts
+    - Test adding a RMarkdown file.
+    - Some problems here:
+        - Need to use Knitr to output the markdown, because you need to process the chunks.
+        - Added [Katex](https://katex.org/) typesetting library into header, which will render Latex.
+        - Difference between `variant: markdown_github` and `variant: gfm`:
+            - `variant: gfm` doesn't change Latex output
+            - `variant: markdown_github` gives a `[WARNING] Deprecated` and the Latex is adjusted for the web.
+        - 

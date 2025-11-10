@@ -11,10 +11,11 @@
 h1, h2, h3, .site-title, .nav-item, .post-link {
   font-family: spectrum;
   letter-spacing: -2px;
+  text-transform: lowercase;
 }
 // ***---***
 .site-header {
-    border-top: 5px solid rgb(0, 255, 0);//#00FF66; //#00FF00; //#009900;
+    border-top: 1px solid #006600; //5px solid rgb(0, 255, 0);//#00FF66; //#00FF00; //#009900;
     // original style 5px solid #999999
     border-bottom: 1px solid #006600;
 }
@@ -26,8 +27,27 @@ h1, h2, h3, .site-title, .nav-item, .post-link {
 }
 a {
     color: #56cd91;
+  
+  &:visited {
+    color:  #56cd91;
+  }
 }
+
+.pdf-embed {
+  width: $content-width;
+  height: $content-width * 1.414
+  // margin: 0 auto;
+  // padding: 0 $spacing-unit;
+
+
+
+
+}
+
+
 // RGB Greens
 // #80FF00
 // #00FF00
 // #00FF80
+
+// One I like #56cd91;
