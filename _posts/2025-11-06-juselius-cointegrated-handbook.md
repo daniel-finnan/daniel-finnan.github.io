@@ -3,12 +3,17 @@ layout: post
 title: Juselius Cointegrated Handbook
 output:
   md_document:
-    variant: markdown_github
+    variant: gfm
     preserve_yaml: true
 katex: true    
 ---
 
-# The Cointegrated VAR Model: Methodology and Applications, Katarina Juselius
+This is a sample blog post
+
+{% highlight r %}
+library(readxl)
+library(zoo)
+{% endhighlight %}
 
 ``` r
 library(readxl)
@@ -39,7 +44,7 @@ library(vars)
     ## Loading required package: lmtest
 
 ``` r
-#library(mvnormalTest)
+library(mvnormalTest)
 library(moments)
 library(tsDyn)
 ```
@@ -73,7 +78,9 @@ data <- read_excel("~/code/R/Johansen/cointegrated_var_model_handbook.xls")
     ## New names:
     ## • `` -> `...1`
 
-``` r
+
+
+{% highlight r %}
 data$date <- as.Date(as.yearqtr(data$...1, format = "%Y-%q"))
 # The real money stock series is defined as the difference between the nominal M3 series (lm3n)
 # and the price levels (lpy)
@@ -93,25 +100,26 @@ data$D754 <- ifelse(data$date == "1975-10-01", 1,
                            ifelse(data$date == "1976-04-01", -0.5, 0)))
 #Dp 764t = 1 for t = 1976:4, 0 otherwise.
 data$D764 <- ifelse(data$date == "1976-10-01", 1, 0)
-```
+{% endhighlight %}
 
 ## Description
 
 | Variable | Name | Description |
-|-------------|-------|-----------------------------------------------------|
-| *m*<sub>*t*</sub><sup>*r*</sup> | Lm3rC | The (corrected) log of the real M3 money stock |
-| *Δ**p*<sub>*t*</sub> | Dpy | The quarterly inflation rate |
-| *y*<sub>*t*</sub><sup>*r*</sup> | Lyr | The log of real income (the implicit price deflator of GNE) |
-| *R*<sub>*m*, *t*</sub> | Rm | An average deposit rate, or own interest on money stock |
-| *R*<sub>*b*, *t*</sub> | Rb | The long-term government bond rate |
+|----|----|----|
+| $`m_t^r`$ | Lm3rC | The (corrected) log of the real M3 money stock |
+| $`\Delta p_t`$ | Dpy | The quarterly inflation rate |
+| $`y_t^r`$ | Lyr | The log of real income (the implicit price deflator of GNE) |
+| $`R_{m,t}`$ | Rm | An average deposit rate, or own interest on money stock |
+| $`R_{b,t}`$ | Rb | The long-term government bond rate |
 |  | Lyp | The log of the price levels |
 |  | Lm3n | The log of the nominal M3 money stock |
 
+$R_{b,t}$
+
 # VAR
 
-Vector given by
-\[*m*<sub>*t*</sub><sup>*r*</sup>, *y*<sub>*t*</sub><sup>*r*</sup>, *Δ**p*<sub>*t*</sub>, *R*<sub>*m*, *t*</sub>, *R*<sub>*b*, *t*</sub>\]
-and *t* = 1973*Q*1, ..., 2003*Q*1
+Vector given by $`[m_t^r, y_t^r, \Delta p_t, R_{m,t}, R_{b,t}]`$ and
+$`t = 1973Q1, ..., 2003Q1`$
 
 NOTE: Skipped standard graphs for moment, page 41
 
@@ -309,7 +317,7 @@ ggplot(df, aes(x=Real, y=Imaginary)) +
     aspect.ratio = 1)
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-4-1.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
 ``` r
 kable(df,
@@ -318,140 +326,236 @@ kable(df,
 ```
 
 <table>
+
 <thead>
+
 <tr>
+
 <th style="text-align:right;">
+
 Real
 </th>
+
 <th style="text-align:right;">
+
 Imaginary
 </th>
+
 <th style="text-align:right;">
+
 Modulus
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:right;">
+
 1.00
 </td>
+
 <td style="text-align:right;">
+
 0.00
 </td>
+
 <td style="text-align:right;">
+
 1.00
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.86
 </td>
+
 <td style="text-align:right;">
+
 0.00
 </td>
+
 <td style="text-align:right;">
+
 0.86
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.76
 </td>
+
 <td style="text-align:right;">
+
 0.00
 </td>
+
 <td style="text-align:right;">
+
 0.76
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.70
 </td>
+
 <td style="text-align:right;">
+
 0.00
 </td>
+
 <td style="text-align:right;">
+
 0.70
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.60
 </td>
+
 <td style="text-align:right;">
+
 0.00
 </td>
+
 <td style="text-align:right;">
+
 0.60
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.48
 </td>
+
 <td style="text-align:right;">
+
 0.00
 </td>
+
 <td style="text-align:right;">
+
 0.48
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 -0.31
 </td>
+
 <td style="text-align:right;">
+
 0.04
 </td>
+
 <td style="text-align:right;">
+
 0.32
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 -0.31
 </td>
+
 <td style="text-align:right;">
+
 -0.04
 </td>
+
 <td style="text-align:right;">
+
 0.32
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.07
 </td>
+
 <td style="text-align:right;">
+
 0.15
 </td>
+
 <td style="text-align:right;">
+
 0.17
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.07
 </td>
+
 <td style="text-align:right;">
+
 -0.15
 </td>
+
 <td style="text-align:right;">
+
 0.17
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
 
 The unrestricted VAR(2) model was estimated based on the following
 assumptions:
 
-*x*<sub>*t*</sub> = *Π*<sub>1</sub>*x*<sub>*t* − 1</sub> + *Π*<sub>2</sub>*x*<sub>*t* − 2</sub> + *Φ**D*<sub>*t*</sub> + *ϵ*<sub>*t*</sub>*t* = 1, ..., *T*, *ϵ*<sub>*t*</sub> ∼ *I**N*<sub>*p*</sub>(0, *Ω*)
-where
-*D*<sub>*t*</sub> = \[*D**q*1<sub>*t*</sub>, *D**q*2<sub>*t*</sub>, *D**q*<sub>3</sub>*t*, *μ*<sub>0</sub>\]
-contains three centred seasonal dummies.
+``` math
+
+x_t = \Pi_1x_{t-1} + \Pi_2x_{t-2} + \Phi D_t + \epsilon_t
+t = 1, ..., T,  \epsilon_t \sim I N_p(0, \Omega)
+```
+where $`D_t = [Dq1_t, Dq2_t, Dq_3t, \mu_0]`$ contains three centred
+seasonal dummies.
 
 # Table 4.1 The estimates of the unrestricted VAR model in levels.
 
@@ -553,42 +657,42 @@ resid_Lm3r <- rstandard(var_2$varresult$Lm3r) # Is this the correct variable?
 plot(x = data$date[3:121], y = resid_Lm3r, type = "l", main = "Residuals from M3 equation")
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-6-1.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
 ``` r
 resid_Lyr <- rstandard(var_2$varresult$Lyr)
 plot(x = data$date[3:121], y = resid_Lyr, type = "l", main = "Residuals from real income equation")
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-6-2.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
 
 ``` r
 resid_Dpy <- rstandard(var_2$varresult$Dpy)
 plot(x = data$date[3:121], y = resid_Dpy, type = "l", main = "Residuals from inflation rate equation")
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-6-3.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-6-3.png)<!-- -->
 
 ``` r
 resid_Rm <- rstandard(var_2$varresult$Rm)
 plot(x = data$date[3:121], y = resid_Rm, type = "l", main = "Residuals from the M3 interest rate equation")
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-6-4.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-6-4.png)<!-- -->
 
 ``` r
 resid_Rb <- rstandard(var_2$varresult$Rb)
 plot(x = data$date[3:121], y = resid_Rb, type = "l", main = "Residuals from the bond rate equation")
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-6-5.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-6-5.png)<!-- -->
 
 ``` r
 # From Fig 3.3
 plot(x = data$date, y = data$Ma4dpy, type = "l", main = "A four quarter moving average of inflation")
 ```
 
-![](juselius_cointegrated_handbook_files/figure-markdown_github/unnamed-chunk-6-6.png)
+![](juselius_cointegrated_handbook_files/figure-gfm/unnamed-chunk-6-6.png)<!-- -->
 
 # ECM representation
 
@@ -780,7 +884,7 @@ summary(vecm_m1)
     ## Multiple R-squared:  0.3801, Adjusted R-squared:  0.2974 
     ## F-statistic: 4.598 on 14 and 105 DF,  p-value: 0.000001958
 
-#The ECM formulation with m = 2 “long-run”
+\#The ECM formulation with m = 2 “long-run”
 
 ``` r
 vecm_m2 <- ca.jo(data[,model], K = 2, season = 4, ecdet = "const", spec = "longrun")
@@ -967,9 +1071,9 @@ Not reproduced m = 3
 # On page 73, there is a table with all R_2, these are simply the Multiple R-squared
 
 \#“Therefore, when the variables are integrated of first order, the R2
-makes sense #only when the dependent variable is given as ∆xi,t . In
+makes sense \#only when the dependent variable is given as ∆xi,t . In
 this case R2 measure the explanatory power of the regressor variables as
-compared to the random walk #model.””
+compared to the random walk \#model.””
 
 ``` r
 df <- data.frame(r_squared = c(
@@ -985,40 +1089,69 @@ kable(df,
 ```
 
 <table>
+
 <thead>
+
 <tr>
+
 <th style="text-align:right;">
+
 r_squared
 </th>
+
 </tr>
+
 </thead>
+
 <tbody>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.48
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.32
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.59
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.41
 </td>
+
 </tr>
+
 <tr>
+
 <td style="text-align:right;">
+
 0.38
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
 
 # Lag length determination
@@ -1109,26 +1242,26 @@ JB_pvalue <- c(
   JB_test$jb.uni$Rb$p.value
 )
 # Shenton-Bowman test in text
-# SB_Lm3r <- msk(vecm_m2$residuals[,"Lm3r.d"], B = 1000)
-# SB_Lyr <- msk(vecm_m2$residuals[,"Lyr.d"], B = 1000)
-# SB_Dpy <- msk(vecm_m2$residuals[,"Dpy.d"], B = 1000)
-# SB_Rm <- msk(vecm_m2$residuals[,"Rm.d"], B = 1000)
-# SB_Rb <- msk(vecm_m2$residuals[,"Rb.d"], B = 1000)
+SB_Lm3r <- msk(vecm_m2$residuals[,"Lm3r.d"], B = 1000)
+SB_Lyr <- msk(vecm_m2$residuals[,"Lyr.d"], B = 1000)
+SB_Dpy <- msk(vecm_m2$residuals[,"Dpy.d"], B = 1000)
+SB_Rm <- msk(vecm_m2$residuals[,"Rm.d"], B = 1000)
+SB_Rb <- msk(vecm_m2$residuals[,"Rb.d"], B = 1000)
 
-# SB_stat <- c(
-#   SB_Lm3r$mv.test['Statistic'],
-#   SB_Lyr$mv.test['Statistic'],
-#   SB_Dpy$mv.test['Statistic'],
-#   SB_Rm$mv.test['Statistic'],
-#   SB_Rb$mv.test['Statistic']
-# )
-# SB_pvalue <- c(
-#   SB_Lm3r$mv.test['p-value'],
-#   SB_Lyr$mv.test['p-value'],
-#   SB_Dpy$mv.test['p-value'],
-#   SB_Rm$mv.test['p-value'],
-#   SB_Rb$mv.test['p-value']
-# )
+SB_stat <- c(
+  SB_Lm3r$mv.test['Statistic'],
+  SB_Lyr$mv.test['Statistic'],
+  SB_Dpy$mv.test['Statistic'],
+  SB_Rm$mv.test['Statistic'],
+  SB_Rb$mv.test['Statistic']
+)
+SB_pvalue <- c(
+  SB_Lm3r$mv.test['p-value'],
+  SB_Lyr$mv.test['p-value'],
+  SB_Dpy$mv.test['p-value'],
+  SB_Rm$mv.test['p-value'],
+  SB_Rb$mv.test['p-value']
+)
 skew <- c(
   skewness(vecm_m2$residuals[,"Lm3r.d"]),
   skewness(vecm_m2$residuals[,"Lyr.d"]),
@@ -1148,8 +1281,8 @@ df <- data.frame(
   "variable" = c("Lm3r", "Lyr", "Dpy", "Rm", "Rb"),
   "Jarque-Beta statistic" = JB_stat,
   "Jarque Beta p-value" = JB_pvalue,
-  # "Shenton-Bowman statistic" = SB_stat,
-  # "Shenton-Bowman p-value" = SB_pvalue,
+  "Shenton-Bowman statistic" = SB_stat,
+  "Shenton-Bowman p-value" = SB_pvalue,
   "Skewness" = skew,
   "Excess kurtosis" = kurt
 )
@@ -1175,9 +1308,9 @@ JB_test$jb.mul$JB$p.value[1,1]
     ## [1] 0
 
 ``` r
-# SB_test <- msk(vecm_m2$residuals, B = 1000)
-# SB_mv_stat <- unname(SB_test$mv.test['Statistic'])
-# SB_mv_pvalue <- unname(SB_test$mv.test['p-value'])
+SB_test <- msk(vecm_m2$residuals, B = 1000)
+SB_mv_stat <- unname(SB_test$mv.test['Statistic'])
+SB_mv_pvalue <- unname(SB_test$mv.test['p-value'])
 ```
 
 # Table 6.3 (says VAR, but is actually VECM form), using corrected m3 & dummies
@@ -1382,7 +1515,7 @@ summary(vecm_m2)
 # Remember there is a way of getting t-stats, etc, going via Pfaff v27i04
 
 vecm_m2 <- ca.jo(data[,model], K = 2, ecdet = "trend", spec = "transitory", dumvar = data[,dummies])
-#summary(vecm_m2$rlm)
+# summary(vecm_m2$rlm)
 
 vecm_m2@GAMMA
 ```
@@ -1444,12 +1577,12 @@ vecm_m2@W
     ## Dpy.d   -0.042504458  0.018343917  0.0149535819  0.0064970057  0.0019078590
     ## Rm.d     0.001357615 -0.003491481  0.0009712355 -0.0009646093  0.0003959802
     ## Rb.d    -0.000100005  0.007241700 -0.0027094238 -0.0023168194  0.0004013931
-    ##                          trend.l1
-    ## Lm3rC.d  0.0000000000000813349033
-    ## Lyr.d   -0.0000000000001134476205
-    ## Dpy.d    0.0000000000000012185049
-    ## Rm.d     0.0000000000000026438469
-    ## Rb.d    -0.0000000000000004198152
+    ##                           trend.l1
+    ## Lm3rC.d  0.00000000000005215255984
+    ## Lyr.d   -0.00000000000007706225447
+    ## Dpy.d   -0.00000000000000008801795
+    ## Rm.d     0.00000000000000174865174
+    ## Rb.d    -0.00000000000000023954478
 
 ``` r
 # Beta
@@ -1478,180 +1611,7 @@ alpha_v5 <- v_5 / v_5['Rb.l1']
 # vecm_tsDyn$model.specific$beta
 # vecm_tsDyn$model.specific$coint
 
-summary(var_2)
-```
-
-    ## 
-    ## VAR Estimation Results:
-    ## ========================= 
-    ## Endogenous variables: Lm3r, Lyr, Dpy, Rm, Rb 
-    ## Deterministic variables: const 
-    ## Sample size: 119 
-    ## Log Likelihood: 2241.279 
-    ## Roots of the characteristic polynomial:
-    ## 1.001 0.8649 0.7633 0.7009 0.6003 0.4803 0.3167 0.3167 0.1661 0.1661
-    ## Call:
-    ## VAR(y = data[, model], p = 2, type = "const", season = 4L)
-    ## 
-    ## 
-    ## Estimation results for equation Lm3r: 
-    ## ===================================== 
-    ## Lm3r = Lm3r.l1 + Lyr.l1 + Dpy.l1 + Rm.l1 + Rb.l1 + Lm3r.l2 + Lyr.l2 + Dpy.l2 + Rm.l2 + Rb.l2 + const + sd1 + sd2 + sd3 
-    ## 
-    ##          Estimate Std. Error t value    Pr(>|t|)    
-    ## Lm3r.l1  0.547348   0.100821   5.429 0.000000368 ***
-    ## Lyr.l1   0.124534   0.238750   0.522    0.603041    
-    ## Dpy.l1  -0.928778   0.419109  -2.216    0.028844 *  
-    ## Rm.l1    3.974254   3.014195   1.319    0.190201    
-    ## Rb.l1   -8.050637   2.162542  -3.723    0.000319 ***
-    ## Lm3r.l2  0.190356   0.090257   2.109    0.037319 *  
-    ## Lyr.l2   0.119417   0.225733   0.529    0.597909    
-    ## Dpy.l2  -0.548185   0.423027  -1.296    0.197863    
-    ## Rm.l2    1.064765   3.251236   0.327    0.743945    
-    ## Rb.l2    3.062731   2.336972   1.311    0.192867    
-    ## const   -0.027763   0.486652  -0.057    0.954615    
-    ## sd1     -0.037852   0.010903  -3.472    0.000752 ***
-    ## sd2     -0.003754   0.009823  -0.382    0.703078    
-    ## sd3     -0.030551   0.010795  -2.830    0.005578 ** 
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## 
-    ## Residual standard error: 0.03687 on 105 degrees of freedom
-    ## Multiple R-Squared: 0.9831,  Adjusted R-squared: 0.981 
-    ## F-statistic: 468.5 on 13 and 105 DF,  p-value: < 0.00000000000000022 
-    ## 
-    ## 
-    ## Estimation results for equation Lyr: 
-    ## ==================================== 
-    ## Lyr = Lm3r.l1 + Lyr.l1 + Dpy.l1 + Rm.l1 + Rb.l1 + Lm3r.l2 + Lyr.l2 + Dpy.l2 + Rm.l2 + Rb.l2 + const + sd1 + sd2 + sd3 
-    ## 
-    ##          Estimate Std. Error t value             Pr(>|t|)    
-    ## Lm3r.l1 -0.009249   0.040137  -0.230             0.818211    
-    ## Lyr.l1   1.039091   0.095046  10.932 < 0.0000000000000002 ***
-    ## Dpy.l1  -0.226733   0.166848  -1.359             0.177083    
-    ## Rm.l1   -1.685214   1.199953  -1.404             0.163151    
-    ## Rb.l1   -2.177891   0.860909  -2.530             0.012899 *  
-    ## Lm3r.l2  0.033212   0.035931   0.924             0.357435    
-    ## Lyr.l2  -0.160072   0.089864  -1.781             0.077761 .  
-    ## Dpy.l2  -0.098821   0.168407  -0.587             0.558598    
-    ## Rm.l2   -0.429324   1.294319  -0.332             0.740778    
-    ## Rb.l2    2.689349   0.930350   2.891             0.004672 ** 
-    ## const    0.706692   0.193736   3.648             0.000414 ***
-    ## sd1     -0.004910   0.004340  -1.131             0.260587    
-    ## sd2     -0.002672   0.003910  -0.683             0.495860    
-    ## sd3     -0.006613   0.004298  -1.539             0.126841    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## 
-    ## Residual standard error: 0.01468 on 105 degrees of freedom
-    ## Multiple R-Squared: 0.9899,  Adjusted R-squared: 0.9886 
-    ## F-statistic: 791.5 on 13 and 105 DF,  p-value: < 0.00000000000000022 
-    ## 
-    ## 
-    ## Estimation results for equation Dpy: 
-    ## ==================================== 
-    ## Dpy = Lm3r.l1 + Lyr.l1 + Dpy.l1 + Rm.l1 + Rb.l1 + Lm3r.l2 + Lyr.l2 + Dpy.l2 + Rm.l2 + Rb.l2 + const + sd1 + sd2 + sd3 
-    ## 
-    ##           Estimate Std. Error t value Pr(>|t|)    
-    ## Lm3r.l1 -0.0076411  0.0238410  -0.321 0.749226    
-    ## Lyr.l1  -0.1095159  0.0564569  -1.940 0.055085 .  
-    ## Dpy.l1   0.0215867  0.0991062   0.218 0.827997    
-    ## Rm.l1   -2.4642389  0.7127626  -3.457 0.000789 ***
-    ## Rb.l1    1.7904343  0.5113734   3.501 0.000681 ***
-    ## Lm3r.l2 -0.0161155  0.0213430  -0.755 0.451896    
-    ## Lyr.l2   0.0982936  0.0533788   1.841 0.068381 .  
-    ## Dpy.l2   0.2094544  0.1000326   2.094 0.038680 *  
-    ## Rm.l2    1.8213377  0.7688155   2.369 0.019663 *  
-    ## Rb.l2   -1.5511853  0.5526207  -2.807 0.005963 ** 
-    ## const    0.2293712  0.1150779   1.993 0.048836 *  
-    ## sd1     -0.0004933  0.0025782  -0.191 0.848647    
-    ## sd2      0.0004701  0.0023228   0.202 0.840001    
-    ## sd3     -0.0026665  0.0025527  -1.045 0.298608    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## 
-    ## Residual standard error: 0.008718 on 105 degrees of freedom
-    ## Multiple R-Squared: 0.5816,  Adjusted R-squared: 0.5298 
-    ## F-statistic: 11.23 on 13 and 105 DF,  p-value: 0.00000000000001032 
-    ## 
-    ## 
-    ## Estimation results for equation Rm: 
-    ## =================================== 
-    ## Rm = Lm3r.l1 + Lyr.l1 + Dpy.l1 + Rm.l1 + Rb.l1 + Lm3r.l2 + Lyr.l2 + Dpy.l2 + Rm.l2 + Rb.l2 + const + sd1 + sd2 + sd3 
-    ## 
-    ##           Estimate Std. Error t value             Pr(>|t|)    
-    ## Lm3r.l1 -0.0045457  0.0032824  -1.385             0.169035    
-    ## Lyr.l1  -0.0010458  0.0077730  -0.135             0.893236    
-    ## Dpy.l1   0.0277559  0.0136449   2.034             0.044457 *  
-    ## Rm.l1    1.0483052  0.0981330  10.682 < 0.0000000000000002 ***
-    ## Rb.l1    0.2979184  0.0704058   4.231            0.0000498 ***
-    ## Lm3r.l2  0.0042705  0.0029385   1.453             0.149127    
-    ## Lyr.l2   0.0002739  0.0073492   0.037             0.970336    
-    ## Dpy.l2  -0.0165370  0.0137725  -1.201             0.232558    
-    ## Rm.l2   -0.1580810  0.1058503  -1.493             0.138321    
-    ## Rb.l2   -0.2593507  0.0760847  -3.409             0.000927 ***
-    ## const    0.0073898  0.0158439   0.466             0.641886    
-    ## sd1     -0.0003256  0.0003550  -0.917             0.361064    
-    ## sd2     -0.0005794  0.0003198  -1.812             0.072868 .  
-    ## sd3     -0.0001298  0.0003515  -0.369             0.712530    
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## 
-    ## Residual standard error: 0.0012 on 105 degrees of freedom
-    ## Multiple R-Squared: 0.9732,  Adjusted R-squared: 0.9699 
-    ## F-statistic: 293.7 on 13 and 105 DF,  p-value: < 0.00000000000000022 
-    ## 
-    ## 
-    ## Estimation results for equation Rb: 
-    ## =================================== 
-    ## Rb = Lm3r.l1 + Lyr.l1 + Dpy.l1 + Rm.l1 + Rb.l1 + Lm3r.l2 + Lyr.l2 + Dpy.l2 + Rm.l2 + Rb.l2 + const + sd1 + sd2 + sd3 
-    ## 
-    ##           Estimate Std. Error t value             Pr(>|t|)    
-    ## Lm3r.l1 -0.0085460  0.0043582  -1.961             0.052536 .  
-    ## Lyr.l1   0.0335708  0.0103204   3.253             0.001537 ** 
-    ## Dpy.l1   0.0322156  0.0181167   1.778             0.078261 .  
-    ## Rm.l1    0.0728848  0.1302934   0.559             0.577087    
-    ## Rb.l1    1.2728431  0.0934794  13.616 < 0.0000000000000002 ***
-    ## Lm3r.l2  0.0073280  0.0039015   1.878             0.063121 .  
-    ## Lyr.l2  -0.0362931  0.0097577  -3.719             0.000323 ***
-    ## Dpy.l2   0.0005054  0.0182860   0.028             0.978001    
-    ## Rm.l2   -0.0607354  0.1405399  -0.432             0.666513    
-    ## Rb.l2   -0.3650805  0.1010194  -3.614             0.000465 ***
-    ## const    0.0274489  0.0210363   1.305             0.194802    
-    ## sd1      0.0001513  0.0004713   0.321             0.748853    
-    ## sd2      0.0006676  0.0004246   1.572             0.118908    
-    ## sd3      0.0008322  0.0004666   1.784             0.077394 .  
-    ## ---
-    ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-    ## 
-    ## 
-    ## Residual standard error: 0.001594 on 105 degrees of freedom
-    ## Multiple R-Squared: 0.9829,  Adjusted R-squared: 0.9808 
-    ## F-statistic: 465.6 on 13 and 105 DF,  p-value: < 0.00000000000000022 
-    ## 
-    ## 
-    ## 
-    ## Covariance matrix of residuals:
-    ##              Lm3r           Lyr          Dpy            Rm            Rb
-    ## Lm3r  0.001359269  0.0000462249 -0.000107964 -0.0000071778 -0.0000100653
-    ## Lyr   0.000046225  0.0002154225 -0.000014965 -0.0000009526  0.0000020151
-    ## Dpy  -0.000107964 -0.0000149654  0.000076007  0.0000023026  0.0000034054
-    ## Rm   -0.000007178 -0.0000009526  0.000002303  0.0000014408  0.0000006287
-    ## Rb   -0.000010065  0.0000020151  0.000003405  0.0000006287  0.0000025398
-    ## 
-    ## Correlation matrix of residuals:
-    ##          Lm3r      Lyr     Dpy       Rm       Rb
-    ## Lm3r  1.00000  0.08542 -0.3359 -0.16220 -0.17130
-    ## Lyr   0.08542  1.00000 -0.1170 -0.05407  0.08615
-    ## Dpy  -0.33589 -0.11695  1.0000  0.22004  0.24510
-    ## Rm   -0.16220 -0.05407  0.2200  1.00000  0.32868
-    ## Rb   -0.17130  0.08615  0.2451  0.32868  1.00000
-
-``` r
+# summary(var_2)
 # causality(vecm_m2, cause = "Lm3r")
 # restrict(var_2, method = "ser")
 # 

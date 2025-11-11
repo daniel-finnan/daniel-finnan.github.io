@@ -34,6 +34,7 @@ Header
 
 CSS/SASS
     - Added CSS and HTML to embed CV as PDF. Is this causing a flash? Getting a Firefox warning
+    - Still haven't got sizing for CV embedded object correct.
 
 Blog posts
     - Test adding a RMarkdown file.
@@ -42,5 +43,34 @@ Blog posts
         - Added [Katex](https://katex.org/) typesetting library into header, which will render Latex.
         - Difference between `variant: markdown_github` and `variant: gfm`:
             - `variant: gfm` doesn't change Latex output
-            - `variant: markdown_github` gives a `[WARNING] Deprecated` and the Latex is adjusted for the web.
-        - 
+            - `variant: markdown_github` gives a `[WARNING] Deprecated` and the Latex is adjusted for the web, which is bad.
+
+Front matter:
+```
+---
+layout: post
+title: Juselius Cointegrated Handbook
+output:
+md_document:
+    variant: markdown_github
+    preserve_yaml: true
+katex: true    
+---
+```
+
+- Add proper text for site description in bottom right.
+
+- Add details to site page for Latex rendering.
+
+# Exporting Rmd file from RStudio
+
+- Backticks being added to Latex?
+
+- Code blocks should be changed to:
+```
+{% highlight ruby %}
+def foo
+  puts 'foo'
+end
+{% endhighlight %}
+```
