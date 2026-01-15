@@ -81,15 +81,15 @@ end
     - HTTPS on Github enabled
     - Currently getting `PR_CONNECT_RESET_ERROR` error
 - Check email re-direct
-- Set up Favicon.ico
+- ~~Set up Favicon.ico~~
 - ~~Add links for supervisors~~
 - ~~Add link for Adum/These.fr~~
-- Update URL details in `_config.yml`
-- Fix Faraday error, see here: https://stackoverflow.com/questions/72498899/deploy-github-pages-with-jekyll
-- Update conferences with CFE
+- ~~Update URL details in `_config.yml`~~
+- ~~Fix Faraday error, see here: https://stackoverflow.com/questions/72498899/deploy-github-pages-with-jekyll~~
+- ~~Update conferences with CFE~~
 - Do I need to keep `_includes`:
     - `disqus_comments.html`
     - `google-analytics.html`
     - These are just going to create another thing for me to do!
 - Do I need to add disclaimer/copyright? I don't think so.
-- Update CV, remove photo, remove personal details.
+- ~~Update CV, remove photo, remove personal details.~~

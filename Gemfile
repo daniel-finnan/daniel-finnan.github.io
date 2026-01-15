@@ -22,4 +22,4 @@ end
 # do not have a Java counterpart.
 gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
-# gem 'faraday', '~> 2.14.0'
+gem 'faraday-retry', '~> 2.4'
