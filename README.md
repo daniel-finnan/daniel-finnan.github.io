@@ -77,10 +77,10 @@ end
 
 # To Do
 
-- Check domain set up
-    - HTTPS on Github enabled
-    - Currently getting `PR_CONNECT_RESET_ERROR` error
-- Check email re-direct
+- ~~Check domain set up~~
+    - ~~HTTPS on Github enabled~~
+    - ~~Currently getting `PR_CONNECT_RESET_ERROR` error~~
+- ~~Check email re-direct~~
 - ~~Set up Favicon.ico~~
 - ~~Add links for supervisors~~
 - ~~Add link for Adum/These.fr~~
