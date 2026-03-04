@@ -11,6 +11,9 @@ permalink: /research/
 - 19th International Joint Conference on Computational and Financial Econometrics, and Computational and Methodological Statistics, [CFE-CMStatistics](https://www.cmstatistics.org/CFECMStatistics2025/), University of London, December 2025.
     - Session: ARDL models and cointegration: A tribute to H. Pesaran
     - Abstract: [ARDL models with high frequency intervals and dynamic sampling: A case study from crypto liquidity](https://www.cmstatistics.org/RegistrationsV2/CFECMStatistics2025/viewSubmission.php?in=794&token=s1783ss485r7o954455606n74o3413r7)
+- [19th Financial Risks International Forum](https://www.risks-forum.org/), March 2026, Palais Brongniart, Paris
+    - Session: DeFi/FinTech
+    - Organised by Institut Louis Bachelier
 
 ## working papers
 
